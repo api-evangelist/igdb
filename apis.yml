@@ -1,32 +1,49 @@
 aid: igdb
 name: IGDB
 description: >-
-  Elevate your business by tapping into a complete, holistic, accurate, and
-  up-to-date data representation of the video game market, its game products and
-  consumer opinions.  
+  IGDB (Internet Game Database) is the world's most comprehensive video game
+  database. The IGDB API provides access to a complete, holistic, accurate, and
+  up-to-date data representation of the video game market, including game
+  products, consumer opinions, and gaming industry information.
 type: Index
-position: Consumer
-access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Video Games
+  - Gaming
+  - Game Database
+  - Entertainment
 created: '2025-02-08'
-modified: '2025-02-08'
+modified: '2026-03-16'
 url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: igdb:igdb
-    name: IGDB
+  - aid: igdb:igdb-api
+    name: IGDB API
     description: >-
-      Elevate your business by tapping into a complete, holistic, accurate, and
-      up-to-date data representation of the video game market, its game products
-      and consumer opinions.  
-    humanURL: ' https://www.igdb.com/api'
+      The IGDB API provides programmatic access to the Internet Game Database,
+      offering data on video games, platforms, companies, genres, release dates,
+      covers, screenshots, and user reviews for thousands of games.
+    humanURL: https://www.igdb.com/api
     tags:
-      - API
+      - Video Games
+      - Game Database
+      - Gaming
     properties:
       - type: Documentation
-        url: ' https://www.igdb.com/api'
+        url: https://api-docs.igdb.com/
+      - type: Getting Started
+        url: https://api-docs.igdb.com/#getting-started
+      - type: Authentication
+        url: https://api-docs.igdb.com/#authentication
+common:
+  - type: Website
+    url: https://www.igdb.com/
+  - type: Portal
+    url: https://www.igdb.com/api
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: Support
+    url: https://www.igdb.com/contact
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
