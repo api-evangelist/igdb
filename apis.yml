@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Video Games
-  - Gaming
-  - Game Database
   - Entertainment
+  - Game Database
+  - Gaming
+  - Video Games
 created: '2025-02-08'
 modified: '2026-03-16'
 url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/apis.yml
@@ -25,9 +25,9 @@ apis:
       covers, screenshots, and user reviews for thousands of games.
     humanURL: https://www.igdb.com/api
     tags:
-      - Video Games
       - Game Database
       - Gaming
+      - Video Games
     properties:
       - type: Documentation
         url: https://api-docs.igdb.com/
