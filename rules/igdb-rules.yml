@@ -1,0 +1,84 @@
+aid: igdb
+name: IGDB API Rules
+description: >-
+  Operational, security, and usage rules for working with the IGDB API. These
+  rules summarize authentication, request shape, rate limits, and content
+  conventions documented at https://api-docs.igdb.com/.
+modified: '2026-04-28'
+rules:
+  - id: auth-twitch-client-credentials
+    name: Authenticate via Twitch OAuth Client Credentials
+    severity: required
+    description: >-
+      Obtain an access token from Twitch using the Client Credentials grant.
+      Send the resulting token as `Authorization: Bearer <token>` and the
+      Twitch developer Client-ID as the `Client-ID` header on every IGDB
+      request.
+  - id: token-rotation
+    name: Rotate and refresh tokens before expiry
+    severity: required
+    description: >-
+      Twitch access tokens are valid for ~60 days. Cache the token, monitor
+      expiry, and request a new one before expiration. Never embed tokens in
+      client-side code.
+  - id: secrets-management
+    name: Store credentials securely
+    severity: required
+    description: >-
+      Keep Client-ID and Client-Secret in environment variables or a secret
+      manager. Do not commit credentials to source control or expose them in
+      browser-facing code.
+  - id: request-method-post
+    name: Use POST for queries
+    severity: required
+    description: >-
+      All IGDB query endpoints (e.g. /games, /platforms) accept POST requests
+      with an Apicalypse query body. Do not use GET for data queries.
+  - id: apicalypse-fields
+    name: Always declare fields
+    severity: recommended
+    description: >-
+      Apicalypse queries should explicitly request `fields name,...;` rather
+      than rely on `fields *;`, except during exploration. Selecting only
+      needed fields reduces payload size and load on the API.
+  - id: pagination-limit
+    name: Honor pagination limits
+    severity: required
+    description: >-
+      The maximum `limit` per request is 500. Use `offset` to paginate larger
+      result sets and avoid exceeding the per-request cap.
+  - id: rate-limit-4rps
+    name: Respect 4 requests-per-second cap
+    severity: required
+    description: >-
+      IGDB enforces a 4 requests-per-second rate limit per Client-ID. Implement
+      client-side throttling and back off when receiving 429 responses.
+  - id: error-handling
+    name: Handle 401, 429, and 5xx responses
+    severity: required
+    description: >-
+      Handle 401 (auth) by refreshing the token, 429 (rate limit) with backoff,
+      and 5xx with retry-with-jitter. Surface IGDB error `cause` to logs for
+      diagnosis.
+  - id: image-url-resolution
+    name: Resolve image URLs through IGDB image CDN
+    severity: recommended
+    description: >-
+      Cover, screenshot, and artwork records expose `image_id`. Construct image
+      URLs using `https://images.igdb.com/igdb/image/upload/t_{size}/{image_id}.jpg`
+      where `{size}` is one of the documented size tokens (e.g. cover_big,
+      screenshot_huge).
+  - id: terms-of-service
+    name: Comply with IGDB / Twitch Terms of Service
+    severity: required
+    description: >-
+      Usage must comply with the IGDB API Terms of Service and Twitch
+      Developer Services Agreement. Attribute IGDB where required and avoid
+      bulk re-publishing the dataset.
+  - id: cache-responses
+    name: Cache stable resources
+    severity: recommended
+    description: >-
+      Reference data (genres, platforms, themes, game modes) changes
+      infrequently. Cache locally with periodic refresh to reduce API load and
+      stay within rate limits.

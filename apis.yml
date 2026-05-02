@@ -13,7 +13,7 @@ tags:
   - Gaming
   - Video Games
 created: '2025-02-08'
-modified: '2026-03-16'
+modified: '2026-04-28'
 url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -22,8 +22,11 @@ apis:
     description: >-
       The IGDB API provides programmatic access to the Internet Game Database,
       offering data on video games, platforms, companies, genres, release dates,
-      covers, screenshots, and user reviews for thousands of games.
+      covers, screenshots, and user reviews for thousands of games. Requests are
+      authenticated via Twitch OAuth Client Credentials and use the Apicalypse
+      query language for filtering and field selection.
     humanURL: https://www.igdb.com/api
+    baseURL: https://api.igdb.com/v4
     tags:
       - Game Database
       - Gaming
@@ -35,6 +38,13 @@ apis:
         url: https://api-docs.igdb.com/#getting-started
       - type: Authentication
         url: https://api-docs.igdb.com/#authentication
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/openapi/igdb-openapi.yml
+      - type: Rules
+        url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+    contact:
+      - FN: IGDB Support
+        url: https://www.igdb.com/contact
 common:
   - type: Website
     url: https://www.igdb.com/
