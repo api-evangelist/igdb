@@ -34,7 +34,7 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.igdb.com/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://api-docs.igdb.com/#getting-started
       - type: Authentication
         url: https://api-docs.igdb.com/#authentication
