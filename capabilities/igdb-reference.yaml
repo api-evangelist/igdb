@@ -1,0 +1,290 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IGDB API — Reference
+  description: 'IGDB API — Reference. 6 operations. Lead operation: Query age ratings. Self-contained Naftiko capability covering
+    one Igdb business surface.'
+  tags:
+  - Igdb
+  - Reference
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IGDB_API_KEY: IGDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: igdb-reference
+    baseUri: https://api.igdb.com/v4
+    description: IGDB API — Reference business capability. Self-contained, no shared references.
+    resources:
+    - name: age_ratings
+      path: /age_ratings
+      operations:
+      - name: post
+        method: POST
+        description: Query age ratings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: collections
+      path: /collections
+      operations:
+      - name: post
+        method: POST
+        description: Query collections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: franchises
+      path: /franchises
+      operations:
+      - name: post
+        method: POST
+        description: Query franchises
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: game_modes
+      path: /game_modes
+      operations:
+      - name: post
+        method: POST
+        description: Query game modes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: keywords
+      path: /keywords
+      operations:
+      - name: post
+        method: POST
+        description: Query keywords
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: websites
+      path: /websites
+      operations:
+      - name: post
+        method: POST
+        description: Query game websites
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.IGDB_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: igdb-reference-rest
+    port: 8080
+    description: REST adapter for IGDB API — Reference. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/age-ratings
+      name: age-ratings
+      description: REST surface for age_ratings.
+      operations:
+      - method: POST
+        name: post
+        description: Query age ratings
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections
+      name: collections
+      description: REST surface for collections.
+      operations:
+      - method: POST
+        name: post
+        description: Query collections
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/franchises
+      name: franchises
+      description: REST surface for franchises.
+      operations:
+      - method: POST
+        name: post
+        description: Query franchises
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/game-modes
+      name: game-modes
+      description: REST surface for game_modes.
+      operations:
+      - method: POST
+        name: post
+        description: Query game modes
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/keywords
+      name: keywords
+      description: REST surface for keywords.
+      operations:
+      - method: POST
+        name: post
+        description: Query keywords
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/websites
+      name: websites
+      description: REST surface for websites.
+      operations:
+      - method: POST
+        name: post
+        description: Query game websites
+        call: igdb-reference.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: igdb-reference-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IGDB API — Reference. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: query-age-ratings
+      description: Query age ratings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-collections
+      description: Query collections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-franchises
+      description: Query franchises
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-game-modes
+      description: Query game modes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-keywords
+      description: Query keywords
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-game-websites
+      description: Query game websites
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-reference.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

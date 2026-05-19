@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IGDB API — Search
+  description: 'IGDB API — Search. 1 operations. Lead operation: Search across IGDB entities. Self-contained Naftiko capability
+    covering one Igdb business surface.'
+  tags:
+  - Igdb
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    IGDB_API_KEY: IGDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: igdb-search
+    baseUri: https://api.igdb.com/v4
+    description: IGDB API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: search
+      path: /search
+      operations:
+      - name: post
+        method: POST
+        description: Search across IGDB entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.IGDB_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: igdb-search-rest
+    port: 8080
+    description: REST adapter for IGDB API — Search. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/search
+      name: search
+      description: REST surface for search.
+      operations:
+      - method: POST
+        name: post
+        description: Search across IGDB entities
+        call: igdb-search.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: igdb-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for IGDB API — Search. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: search-across-igdb-entities
+      description: Search across IGDB entities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: igdb-search.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
