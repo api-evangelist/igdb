@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IGDB API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Client-ID",
+      "value": "{{Client-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Games",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query games",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/games"
+          },
+          "docs": "Returns a list of games matching the provided Apicalypse query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Platforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query platforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/platforms"
+          },
+          "docs": "Query platforms"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/companies"
+          },
+          "docs": "Query companies"
+        },
+        {
+          "info": {
+            "name": "Query involved companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/involved_companies"
+          },
+          "docs": "Query involved companies"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Genres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/genres"
+          },
+          "docs": "Query genres"
+        },
+        {
+          "info": {
+            "name": "Query themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/themes"
+          },
+          "docs": "Query themes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query game modes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/game_modes"
+          },
+          "docs": "Query game modes"
+        },
+        {
+          "info": {
+            "name": "Query collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/collections"
+          },
+          "docs": "Query collections"
+        },
+        {
+          "info": {
+            "name": "Query franchises",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/franchises"
+          },
+          "docs": "Query franchises"
+        },
+        {
+          "info": {
+            "name": "Query keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/keywords"
+          },
+          "docs": "Query keywords"
+        },
+        {
+          "info": {
+            "name": "Query age ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/age_ratings"
+          },
+          "docs": "Query age ratings"
+        },
+        {
+          "info": {
+            "name": "Query game websites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/websites"
+          },
+          "docs": "Query game websites"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query game covers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/covers"
+          },
+          "docs": "Query game covers"
+        },
+        {
+          "info": {
+            "name": "Query screenshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/screenshots"
+          },
+          "docs": "Query screenshots"
+        },
+        {
+          "info": {
+            "name": "Query artworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/artworks"
+          },
+          "docs": "Query artworks"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Releases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query release dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/release_dates"
+          },
+          "docs": "Query release dates"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search across IGDB entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/search"
+          },
+          "docs": "Performs a free-text search across games, characters, collections, people, platforms, and themes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
