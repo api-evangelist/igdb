@@ -44,6 +44,10 @@ apis:
       - FN: IGDB Support
         url: https://www.igdb.com/contact
 common:
+  - type: DomainSecurity
+    url: security/igdb-domain-security.yml
+  - type: Authentication
+    url: authentication/igdb-authentication.yml
   - type: Website
     url: https://www.igdb.com/
   - type: Portal

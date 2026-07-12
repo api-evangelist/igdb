@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/igdb-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: ClientID
+  type: apiKey
+  in: header
+  parameter: Client-ID
+  description: Twitch developer Client-ID issued for the IGDB API.
+  sources:
+  - openapi/igdb-openapi.yml
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: OAuth2 access token
+  description: Bearer access token obtained via the Twitch OAuth Client Credentials flow.
+  sources:
+  - openapi/igdb-openapi.yml
