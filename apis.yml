@@ -44,6 +44,8 @@ apis:
       - FN: IGDB Support
         url: https://www.igdb.com/contact
 common:
+  - type: AgenticAccess
+    url: agentic-access/igdb-agentic-access.yml
   - type: DomainSecurity
     url: security/igdb-domain-security.yml
   - type: Authentication
