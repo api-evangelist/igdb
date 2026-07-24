@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: IGDB Companies Platforms API
+  description: 'The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.
+
+    Authentication uses Twitch OAuth Client Credentials. All requests require a Client-ID header and an Authorization Bearer token. Most endpoints accept POST requests with an Apicalypse query body for filtering, sorting, and field selection.'
+  version: '4.0'
+  contact:
+    name: IGDB Support
+    url: https://www.igdb.com/contact
+  license:
+    name: Terms of Service
+    url: https://api-docs.igdb.com/#terms-of-service
+servers:
+- url: https://api.igdb.com/v4
+  description: IGDB API v4 production
+security:
+- ClientID: []
+  BearerAuth: []
+tags:
+- name: Platforms
+  description: Gaming platforms and hardware.
+paths:
+  /platforms:
+    post:
+      tags:
+      - Platforms
+      summary: Query platforms
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of platforms.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    ApicalypseQuery:
+      type: string
+      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
+      example: 'fields name,summary,cover.url,first_release_date;
+
+        where rating > 80;
+
+        sort rating desc;
+
+        limit 10;'
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
+    Platform:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        abbreviation:
+          type: string
+        slug:
+          type: string
+        generation:
+          type: integer
+        url:
+          type: string
+          format: uri
+  responses:
+    Unauthorized:
+      description: Missing or invalid Client-ID or bearer token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ClientID:
+      type: apiKey
+      in: header
+      name: Client-ID
+      description: Twitch developer Client-ID issued for the IGDB API.
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2 access token
+      description: Bearer access token obtained via the Twitch OAuth Client Credentials flow.
