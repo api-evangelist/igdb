@@ -5,7 +5,20 @@ description: >-
   complete, holistic, accurate, and up-to-date data representation of the video game market, including game products,
   consumer opinions, and gaming industry information.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/igdb.png
 tags:
   - Entertainment
   - Game Database
@@ -16,33 +29,158 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: igdb:igdb-api
-    name: IGDB API
-    description: >-
-      The IGDB API provides programmatic access to the Internet Game Database, offering data on video games, platforms,
-      companies, genres, release dates, covers, screenshots, and user reviews for thousands of games. Requests are
-      authenticated via Twitch OAuth Client Credentials and use the Apicalypse query language for filtering and field
-      selection.
-    humanURL: https://www.igdb.com/api
-    baseURL: https://api.igdb.com/v4
-    tags:
-      - Game Database
-      - Gaming
-      - Video Games
-    properties:
-      - type: Documentation
-        url: https://api-docs.igdb.com/
-      - type: GettingStarted
-        url: https://api-docs.igdb.com/#getting-started
-      - type: Authentication
-        url: https://api-docs.igdb.com/#authentication
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/openapi/igdb-openapi.yml
-      - type: Rules
-        url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
-    contact:
-      - FN: IGDB Support
-        url: https://www.igdb.com/contact
+- aid: igdb:igdb-companies-api
+  name: IGDB Companies API
+  description: Companies and developers/publishers in the gaming industry.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-companies-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-games-api
+  name: IGDB Games API
+  description: Video game records and related metadata.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Games
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-games-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-genres-api
+  name: IGDB Genres API
+  description: Game genres and themes.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Genres
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-genres-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-media-api
+  name: IGDB Media API
+  description: Covers, screenshots, artworks, and other media.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-media-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-platforms-api
+  name: IGDB Platforms API
+  description: Gaming platforms and hardware.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-reference-api
+  name: IGDB Reference API
+  description: Reference data such as keywords, collections, and franchises.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-reference-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-releases-api
+  name: IGDB Releases API
+  description: Release dates and regional releases.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Releases
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-releases-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
+- aid: igdb:igdb-search-api
+  name: IGDB Search API
+  description: Cross-entity search.
+  humanURL: https://www.igdb.com/api
+  baseURL: https://api.igdb.com/v4
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/igdb-search-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.igdb.com/
+  - type: GettingStarted
+    url: https://api-docs.igdb.com/#getting-started
+  - type: Authentication
+    url: https://api-docs.igdb.com/#authentication
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/rules/igdb-rules.yml
 common:
   - type: AgenticAccess
     url: agentic-access/igdb-agentic-access.yml
