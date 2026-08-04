@@ -1,0 +1,28 @@
+{
+  "provider": "igdb",
+  "sources": [
+    "igdb-companies-api-openapi.yml",
+    "igdb-games-api-openapi.yml",
+    "igdb-genres-api-openapi.yml",
+    "igdb-media-api-openapi.yml",
+    "igdb-platforms-api-openapi.yml",
+    "igdb-reference-api-openapi.yml",
+    "igdb-releases-api-openapi.yml",
+    "igdb-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "igdb-companies-api-openapi.yml",
+    "igdb-games-api-openapi.yml",
+    "igdb-genres-api-openapi.yml",
+    "igdb-media-api-openapi.yml",
+    "igdb-platforms-api-openapi.yml",
+    "igdb-reference-api-openapi.yml",
+    "igdb-releases-api-openapi.yml",
+    "igdb-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,571 @@
+openapi: 3.0.3
+info:
+  title: IGDB API
+  description: >-
+    The IGDB (Internet Game Database) API provides programmatic access to a
+    comprehensive video game database, including games, platforms, companies,
+    genres, release dates, covers, screenshots, and user reviews.
+
+    Authentication uses Twitch OAuth Client Credentials. All requests require a
+    Client-ID header and an Authorization Bearer token. Most endpoints accept
+    POST requests with an Apicalypse query body for filtering, sorting, and
+    field selection.
+  version: '4.0'
+  contact:
+    name: IGDB Support
+    url: https://www.igdb.com/contact
+  license:
+    name: Terms of Service
+    url: https://api-docs.igdb.com/#terms-of-service
+servers:
+  - url: https://api.igdb.com/v4
+    description: IGDB API v4 production
+security:
+  - ClientID: []
+    BearerAuth: []
+tags:
+  - name: Games
+    description: Video game records and related metadata.
+  - name: Platforms
+    description: Gaming platforms and hardware.
+  - name: Companies
+    description: Companies and developers/publishers in the gaming industry.
+  - name: Genres
+    description: Game genres and themes.
+  - name: Media
+    description: Covers, screenshots, artworks, and other media.
+  - name: Releases
+    description: Release dates and regional releases.
+  - name: Reference
+    description: Reference data such as keywords, collections, and franchises.
+  - name: Search
+    description: Cross-entity search.
+paths:
+  /games:
+    post:
+      tags:
+        - Games
+      summary: Query games
+      description: Returns a list of games matching the provided Apicalypse query.
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of games.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /platforms:
+    post:
+      tags:
+        - Platforms
+      summary: Query platforms
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of platforms.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /companies:
+    post:
+      tags:
+        - Companies
+      summary: Query companies
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of companies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /involved_companies:
+    post:
+      tags:
+        - Companies
+      summary: Query involved companies
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of involved company records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /genres:
+    post:
+      tags:
+        - Genres
+      summary: Query genres
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of genres.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Genre'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /themes:
+    post:
+      tags:
+        - Genres
+      summary: Query themes
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of themes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /game_modes:
+    post:
+      tags:
+        - Reference
+      summary: Query game modes
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of game modes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /covers:
+    post:
+      tags:
+        - Media
+      summary: Query game covers
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of cover images.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cover'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /screenshots:
+    post:
+      tags:
+        - Media
+      summary: Query screenshots
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of screenshot images.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /artworks:
+    post:
+      tags:
+        - Media
+      summary: Query artworks
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of artworks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /release_dates:
+    post:
+      tags:
+        - Releases
+      summary: Query release dates
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of release date records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReleaseDate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /collections:
+    post:
+      tags:
+        - Reference
+      summary: Query collections
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of collections.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /franchises:
+    post:
+      tags:
+        - Reference
+      summary: Query franchises
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of franchises.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /keywords:
+    post:
+      tags:
+        - Reference
+      summary: Query keywords
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of keywords.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /age_ratings:
+    post:
+      tags:
+        - Reference
+      summary: Query age ratings
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of age rating records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /websites:
+    post:
+      tags:
+        - Reference
+      summary: Query game websites
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of website records associated with games.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /search:
+    post:
+      tags:
+        - Search
+      summary: Search across IGDB entities
+      description: >-
+        Performs a free-text search across games, characters, collections,
+        people, platforms, and themes.
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ApicalypseQuery'
+      responses:
+        '200':
+          description: A list of search results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    ClientID:
+      type: apiKey
+      in: header
+      name: Client-ID
+      description: Twitch developer Client-ID issued for the IGDB API.
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2 access token
+      description: Bearer access token obtained via the Twitch OAuth Client Credentials flow.
+  responses:
+    Unauthorized:
+      description: Missing or invalid Client-ID or bearer token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ApicalypseQuery:
+      type: string
+      description: >-
+        Apicalypse query string used to filter, sort, paginate, and select
+        fields on IGDB resources. Example: `fields name,cover.url; where
+        rating > 80; limit 10;`
+      example: |-
+        fields name,summary,cover.url,first_release_date;
+        where rating > 80;
+        sort rating desc;
+        limit 10;
+    Game:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        summary:
+          type: string
+        storyline:
+          type: string
+        rating:
+          type: number
+          format: float
+        rating_count:
+          type: integer
+        first_release_date:
+          type: integer
+          description: Unix timestamp of first release.
+        cover:
+          type: integer
+          description: Reference to a cover record id.
+        genres:
+          type: array
+          items:
+            type: integer
+        platforms:
+          type: array
+          items:
+            type: integer
+        url:
+          type: string
+          format: uri
+    Platform:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        abbreviation:
+          type: string
+        slug:
+          type: string
+        generation:
+          type: integer
+        url:
+          type: string
+          format: uri
+    Company:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        country:
+          type: integer
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+    Genre:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        url:
+          type: string
+          format: uri
+    Cover:
+      type: object
+      properties:
+        id:
+          type: integer
+        game:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        image_id:
+          type: string
+    ReleaseDate:
+      type: object
+      properties:
+        id:
+          type: integer
+        game:
+          type: integer
+        platform:
+          type: integer
+        region:
+          type: integer
+        date:
+          type: integer
+          description: Unix timestamp of release.
+        human:
+          type: string
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
