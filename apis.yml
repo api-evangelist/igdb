@@ -27,7 +27,7 @@ tags:
 created: '2025-02-08'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/igdb/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: igdb:igdb-companies-api
   name: IGDB Companies API
