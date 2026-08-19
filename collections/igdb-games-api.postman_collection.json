@@ -1,0 +1,184 @@
+{
+  "item": [
+    {
+      "id": "acf65bc8-f16e-4a7d-9cf8-e02993259a87",
+      "name": "Games",
+      "description": {
+        "content": "Video game records and related metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f6f2d73-d159-4c9c-bb20-58eeb8e99b3f",
+          "name": "Query games",
+          "request": {
+            "name": "Query games",
+            "description": {
+              "content": "Returns a list of games matching the provided Apicalypse query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "games"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "7912d9b7-5c0b-4a6d-b3e7-3c47362ebbd9",
+              "name": "A list of games.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Client-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "fields name,summary,cover.url,first_release_date;\nwhere rating > 80;\nsort rating desc;\nlimit 10;"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 2545,\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"summary\": \"string\",\n    \"storyline\": \"string\",\n    \"rating\": 4133.966878508727,\n    \"rating_count\": 7429,\n    \"first_release_date\": 8111,\n    \"cover\": 8786,\n    \"genres\": [\n      1643,\n      7834\n    ],\n    \"platforms\": [\n      6658,\n      5469\n    ],\n    \"url\": \"https://XxVnihLwjamcjZMc.rnyZ0x-hq0Kag54D3Yo+WbhJGqjUNxv,XEfoZi9RDcdHOyb7vBQ+sCM4w+0\"\n  },\n  {\n    \"id\": 9485,\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"summary\": \"string\",\n    \"storyline\": \"string\",\n    \"rating\": 3281.6961845283645,\n    \"rating_count\": 2792,\n    \"first_release_date\": 1089,\n    \"cover\": 3283,\n    \"genres\": [\n      6902,\n      2549\n    ],\n    \"platforms\": [\n      8956,\n      6595\n    ],\n    \"url\": \"https://fzSLEMqjkJnghL.kuyJ2tbu1nQ\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b093a76f-2e96-4cf9-84b4-8c29d60ae30c",
+              "name": "Missing or invalid Client-ID or bearer token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Client-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "fields name,summary,cover.url,first_release_date;\nwhere rating > 80;\nsort rating desc;\nlimit 10;"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 7226,\n  \"cause\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.igdb.com/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Client-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3aa049a9-0b1b-4886-bdcb-d90856028c31",
+    "name": "IGDB Companies Games API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.\nAuthentication uses Twitch OAuth Client Credentials. All requests require a Client-ID header and an Authorization Bearer token. Most endpoints accept POST requests with an Apicalypse query body for filtering, sorting, and field selection.\n\nContact Support:\n Name: IGDB Support",
+      "type": "text/plain"
+    }
+  }
+}

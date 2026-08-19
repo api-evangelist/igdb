@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IGDB Companies Genres API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Client-ID",
+      "value": "{{Client-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Genres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/genres"
+          },
+          "docs": "Query genres"
+        },
+        {
+          "info": {
+            "name": "Query themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/themes"
+          },
+          "docs": "Query themes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

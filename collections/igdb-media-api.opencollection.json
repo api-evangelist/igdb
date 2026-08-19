@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IGDB Companies Media API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Client-ID",
+      "value": "{{Client-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query game covers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/covers"
+          },
+          "docs": "Query game covers"
+        },
+        {
+          "info": {
+            "name": "Query screenshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/screenshots"
+          },
+          "docs": "Query screenshots"
+        },
+        {
+          "info": {
+            "name": "Query artworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/artworks"
+          },
+          "docs": "Query artworks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

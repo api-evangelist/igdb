@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IGDB Companies Reference API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Client-ID",
+      "value": "{{Client-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query game modes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/game_modes"
+          },
+          "docs": "Query game modes"
+        },
+        {
+          "info": {
+            "name": "Query collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/collections"
+          },
+          "docs": "Query collections"
+        },
+        {
+          "info": {
+            "name": "Query franchises",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/franchises"
+          },
+          "docs": "Query franchises"
+        },
+        {
+          "info": {
+            "name": "Query keywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/keywords"
+          },
+          "docs": "Query keywords"
+        },
+        {
+          "info": {
+            "name": "Query age ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/age_ratings"
+          },
+          "docs": "Query age ratings"
+        },
+        {
+          "info": {
+            "name": "Query game websites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.igdb.com/v4/websites"
+          },
+          "docs": "Query game websites"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
