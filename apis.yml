@@ -123,6 +123,8 @@ apis:
   humanURL: https://www.igdb.com/api
   baseURL: https://api.igdb.com/v4
   tags:
+  - Platform
+  tags_raw:
   - Platforms
   properties:
   - type: OpenAPI
