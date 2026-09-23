@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: IGDB Companies Platforms API
+  title: IGDB Platforms API
   description: 'The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.
 
     Authentication uses Twitch OAuth Client Credentials. All requests require a Client-ID header and an Authorization Bearer token. Most endpoints accept POST requests with an Apicalypse query body for filtering, sorting, and field selection.'
@@ -43,27 +43,10 @@ paths:
                   $ref: '#/components/schemas/Platform'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postPlatforms
+      x-operation-id-source: derived
 components:
   schemas:
-    ApicalypseQuery:
-      type: string
-      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
-      example: 'fields name,summary,cover.url,first_release_date;
-
-        where rating > 80;
-
-        sort rating desc;
-
-        limit 10;'
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
-          type: string
     Platform:
       type: object
       properties:
@@ -80,6 +63,25 @@ components:
         url:
           type: string
           format: uri
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
+    ApicalypseQuery:
+      type: string
+      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
+      example: 'fields name,summary,cover.url,first_release_date;
+
+        where rating > 80;
+
+        sort rating desc;
+
+        limit 10;'
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.

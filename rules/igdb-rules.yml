@@ -1,10 +1,10 @@
-aid: igdb
-name: IGDB API Rules
+x-aid: igdb
+x-name: IGDB API Rules
 description: >-
   Operational, security, and usage rules for working with the IGDB API. These
   rules summarize authentication, request shape, rate limits, and content
   conventions documented at https://api-docs.igdb.com/.
-modified: '2026-04-28'
+x-modified: '2026-04-28'
 rules:
   - id: auth-twitch-client-credentials
     name: Authenticate via Twitch OAuth Client Credentials

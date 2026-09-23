@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: IGDB Companies API
   description: 'The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.
@@ -43,6 +43,8 @@ paths:
                   $ref: '#/components/schemas/Company'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postCompanies
+      x-operation-id-source: derived
   /involved_companies:
     post:
       tags:
@@ -65,8 +67,19 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postInvolvedCompanies
+      x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
     ApicalypseQuery:
       type: string
       description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
@@ -77,15 +90,6 @@ components:
         sort rating desc;
 
         limit 10;'
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
-          type: string
     Company:
       type: object
       properties:

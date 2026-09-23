@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: IGDB Companies Releases API
+  title: IGDB Releases API
   description: 'The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.
 
     Authentication uses Twitch OAuth Client Credentials. All requests require a Client-ID header and an Authorization Bearer token. Most endpoints accept POST requests with an Apicalypse query body for filtering, sorting, and field selection.'
@@ -43,6 +43,8 @@ paths:
                   $ref: '#/components/schemas/ReleaseDate'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postReleaseDates
+      x-operation-id-source: derived
 components:
   schemas:
     ReleaseDate:

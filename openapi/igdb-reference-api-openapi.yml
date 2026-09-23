@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: IGDB Companies Reference API
+  title: IGDB Reference API
   description: 'The IGDB (Internet Game Database) API provides programmatic access to a comprehensive video game database, including games, platforms, companies, genres, release dates, covers, screenshots, and user reviews.
 
     Authentication uses Twitch OAuth Client Credentials. All requests require a Client-ID header and an Authorization Bearer token. Most endpoints accept POST requests with an Apicalypse query body for filtering, sorting, and field selection.'
@@ -43,6 +43,8 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postGameModes
+      x-operation-id-source: derived
   /collections:
     post:
       tags:
@@ -65,6 +67,8 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postCollections
+      x-operation-id-source: derived
   /franchises:
     post:
       tags:
@@ -87,6 +91,8 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postFranchises
+      x-operation-id-source: derived
   /keywords:
     post:
       tags:
@@ -109,6 +115,8 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postKeywords
+      x-operation-id-source: derived
   /age_ratings:
     post:
       tags:
@@ -131,6 +139,8 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postAgeRatings
+      x-operation-id-source: derived
   /websites:
     post:
       tags:
@@ -153,8 +163,19 @@ paths:
                   type: object
         '401':
           $ref: '#/components/responses/Unauthorized'
+      operationId: postWebsites
+      x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
     ApicalypseQuery:
       type: string
       description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
@@ -165,15 +186,6 @@ components:
         sort rating desc;
 
         limit 10;'
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
-          type: string
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.
