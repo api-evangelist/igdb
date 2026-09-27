@@ -47,22 +47,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ReleaseDate:
-      type: object
-      properties:
-        id:
-          type: integer
-        game:
-          type: integer
-        platform:
-          type: integer
-        region:
-          type: integer
-        date:
-          type: integer
-          description: Unix timestamp of release.
-        human:
-          type: string
     Error:
       type: object
       properties:
@@ -82,6 +66,22 @@ components:
         sort rating desc;
 
         limit 10;'
+    ReleaseDate:
+      type: object
+      properties:
+        id:
+          type: integer
+        game:
+          type: integer
+        platform:
+          type: integer
+        region:
+          type: integer
+        date:
+          type: integer
+          description: Unix timestamp of release.
+        human:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.

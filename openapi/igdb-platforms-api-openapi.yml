@@ -47,22 +47,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Platform:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        abbreviation:
-          type: string
-        slug:
-          type: string
-        generation:
-          type: integer
-        url:
-          type: string
-          format: uri
     Error:
       type: object
       properties:
@@ -82,6 +66,22 @@ components:
         sort rating desc;
 
         limit 10;'
+    Platform:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        abbreviation:
+          type: string
+        slug:
+          type: string
+        generation:
+          type: integer
+        url:
+          type: string
+          format: uri
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.
