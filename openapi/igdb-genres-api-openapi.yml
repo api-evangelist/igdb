@@ -83,15 +83,6 @@ components:
         url:
           type: string
           format: uri
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
-          type: string
     ApicalypseQuery:
       type: string
       description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
@@ -102,6 +93,15 @@ components:
         sort rating desc;
 
         limit 10;'
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.

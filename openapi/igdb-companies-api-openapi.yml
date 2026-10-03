@@ -71,6 +71,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ApicalypseQuery:
+      type: string
+      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
+      example: 'fields name,summary,cover.url,first_release_date;
+
+        where rating > 80;
+
+        sort rating desc;
+
+        limit 10;'
     Company:
       type: object
       properties:
@@ -96,16 +106,6 @@ components:
           type: integer
         cause:
           type: string
-    ApicalypseQuery:
-      type: string
-      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
-      example: 'fields name,summary,cover.url,first_release_date;
-
-        where rating > 80;
-
-        sort rating desc;
-
-        limit 10;'
   responses:
     Unauthorized:
       description: Missing or invalid Client-ID or bearer token.
