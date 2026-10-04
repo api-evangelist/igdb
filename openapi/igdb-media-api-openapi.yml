@@ -105,15 +105,6 @@ components:
         sort rating desc;
 
         limit 10;'
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
-          type: string
     Cover:
       type: object
       properties:
@@ -128,6 +119,15 @@ components:
         height:
           type: integer
         image_id:
+          type: string
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
           type: string
   responses:
     Unauthorized:

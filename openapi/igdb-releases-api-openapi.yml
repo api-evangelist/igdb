@@ -57,6 +57,15 @@ components:
         sort rating desc;
 
         limit 10;'
+    Error:
+      type: object
+      properties:
+        title:
+          type: string
+        status:
+          type: integer
+        cause:
+          type: string
     ReleaseDate:
       type: object
       properties:
@@ -72,15 +81,6 @@ components:
           type: integer
           description: Unix timestamp of release.
         human:
-          type: string
-    Error:
-      type: object
-      properties:
-        title:
-          type: string
-        status:
-          type: integer
-        cause:
           type: string
   responses:
     Unauthorized:

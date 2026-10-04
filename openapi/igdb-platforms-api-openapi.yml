@@ -47,16 +47,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ApicalypseQuery:
-      type: string
-      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
-      example: 'fields name,summary,cover.url,first_release_date;
-
-        where rating > 80;
-
-        sort rating desc;
-
-        limit 10;'
     Platform:
       type: object
       properties:
@@ -73,6 +63,16 @@ components:
         url:
           type: string
           format: uri
+    ApicalypseQuery:
+      type: string
+      description: 'Apicalypse query string used to filter, sort, paginate, and select fields on IGDB resources. Example: `fields name,cover.url; where rating > 80; limit 10;`'
+      example: 'fields name,summary,cover.url,first_release_date;
+
+        where rating > 80;
+
+        sort rating desc;
+
+        limit 10;'
     Error:
       type: object
       properties:
